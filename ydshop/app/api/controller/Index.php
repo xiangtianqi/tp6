@@ -2,11 +2,12 @@
 declare (strict_types = 1);
 
 namespace app\api\controller;
-
-class Index
+use app\BaseController;
+class Index extends  BaseController
 {
     public function index()
     {
-        return '您好！这是一个[api]示例应用';
+        echo $action = $this->request->action().PHP_EOL;
+        echo $path = $this->app->getBasePath();
     }
 }
