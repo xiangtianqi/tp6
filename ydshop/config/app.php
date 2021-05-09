@@ -17,7 +17,9 @@ return [
     // 自动多应用模式
     'auto_multi_app' => true,
     // 应用映射（自动多应用模式有效）
-    'app_map'          => [],
+    'app_map'          => [
+        //'think'  =>  'admin',  // 把admin应用映射为think
+    ],
     // 域名绑定（自动多应用模式有效）
     'domain_bind'      => [],
     // 禁止URL访问的应用列表（自动多应用模式有效）
@@ -29,5 +31,5 @@ return [
     // 错误显示信息,非调试模式有效
     'error_message'    => '页面错误！请稍后再试～',
     // 显示错误信息
-    'show_error_msg'   => false,
+    'show_error_msg'   => true,
 ];
