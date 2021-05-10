@@ -10,15 +10,16 @@ class Index extends  BaseController
 {
     public function index()
     {
-        event('UserLogin');
+       event('UserLogin');
         // 返回数据
-        $result = [
+      $result = [
             'banner_list'		=> BannerService::Banner(),
         ];
         return json($result);
     }
 
     public function admin(){
+        echo \think\facade\Route::buildUrl();
         halt('amdin');
     }
 }

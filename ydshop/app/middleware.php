@@ -9,7 +9,7 @@ return [
     // \think\middleware\SessionInit::class
 
     //test
-   // \app\middleware\Check::class,
+    \app\middleware\Check::class,
 
     //跨域请求支持
     think\middleware\AllowCrossDomain::class

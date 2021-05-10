@@ -15,10 +15,10 @@ class Check
     public function handle($request, \Closure $next)
     {
 
-        if ($request->param('name') == 'think') {
+     /*   if ($request->param('name') == 'think') {
             return redirect('admin/index');
-        }
-
+        }*/
+        echo '中间件';
         return $next($request);
     }
 }
