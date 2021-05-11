@@ -13,6 +13,24 @@ class UserLogin
     public function handle($event)
     {
         //
-        echo '事件监听'.PHP_EOL;
+        $this->sendSms();
+        $this->sendEmail();
+
     }
+
+
+    /*
+     * 发送邮件
+     */
+    public function sendEmail(){
+        echo '发送邮件处理';
+    }
+
+    /*
+    * 发送短信
+    */
+    public function sendSms(){
+        echo '发送短信处理';
+    }
+
 }
