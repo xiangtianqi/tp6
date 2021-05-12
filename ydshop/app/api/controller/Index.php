@@ -8,6 +8,7 @@ use think\facade\View;
 use think\facade\Cache;
 use app\validate\User;
 use think\exception\ValidateException;
+use think\captcha\facade\Captcha;
 
 class Index extends  BaseController
 {
@@ -47,5 +48,10 @@ class Index extends  BaseController
             //dump($e->getError());
             return json($e->getError());
         }*/
+    }
+
+    public function verify()
+    {
+        return Captcha::create();
     }
 }
