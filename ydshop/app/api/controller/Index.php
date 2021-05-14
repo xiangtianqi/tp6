@@ -8,6 +8,7 @@ use think\facade\View;
 use think\facade\Cache;
 use app\validate\User;
 use think\exception\ValidateException;
+use think\cache\driver\Redis;
 
 class Index extends  BaseController
 {
@@ -17,7 +18,7 @@ class Index extends  BaseController
 
          //View::assign('name','ThinkPHP');
         //return View::fetch('index');
-        validate();
+        //validate();
        /*event('UserLogin');
         // 返回数据
       $result = [
@@ -34,18 +35,8 @@ class Index extends  BaseController
 
     public function test()
     {
-        //Cache::set('name','xd',10);
-       halt(Cache::get('name'));
-       /* try {
-            validate(User::class)->check([
-                'name'  => 'xd',
-                'email' => 'thinkphp@@qq.com',
-            ]);
-
-        } catch (ValidateException $e) {
-            // 验证失败 输出错误信息
-            //dump($e->getError());
-            return json($e->getError());
-        }*/
+        Cache::set('age',66);
+        Cache::set('name','xd');
+      return  Cache::get('name');
     }
 }
