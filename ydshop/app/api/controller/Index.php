@@ -39,8 +39,7 @@ class Index extends  BaseController
     public function test()
     {
         Cache::set('age',66);
-        Cache::set('name','xd');
-      return  Cache::get('name');
+      return  Cache::get('age');
     }
 
     public function sms()
