@@ -39,4 +39,9 @@ class Index extends  BaseController
         Cache::set('name','xd');
       return  Cache::get('name');
     }
+
+    public function verify()
+    {
+        return Captcha::create();
+    }
 }
