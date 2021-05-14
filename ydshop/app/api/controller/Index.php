@@ -9,6 +9,9 @@ use think\facade\Cache;
 use app\validate\User;
 use think\exception\ValidateException;
 use think\cache\driver\Redis;
+use AlibabaCloud\Client\AlibabaCloud;
+use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Exception\ServerException;
 
 class Index extends  BaseController
 {
@@ -40,8 +43,34 @@ class Index extends  BaseController
       return  Cache::get('name');
     }
 
-    public function verify()
+    public function sms()
     {
-        return Captcha::create();
+        AlibabaCloud::accessKeyClient('LTAI5tF2iBbrGBzbUg1644Vu', 'PXTObCa892X9qXPphw0KYRvPIbw59K')
+            ->regionId('ap-northeast-1')
+            ->asDefaultClient();
+
+        try {
+            $result = AlibabaCloud::rpc()
+                ->product('Dysmsapi')
+                // ->scheme('https') // https | http
+                ->version('2017-05-25')
+                ->action('SendSms')
+                ->method('POST')
+                ->host('dysmsapi.aliyuncs.com')
+                ->options([
+                    'query' => [
+                        'PhoneNumbers' => "15215186296",
+                        'SignName' => "阿里大于测试专用",
+                        'TemplateCode' => "SMS_216828376",
+                        'TemplateParam' => "{\"code\":\"123456\"}",
+                    ],
+                ])
+                ->request();
+            print_r($result->toArray());
+        } catch (ClientException $e) {
+            echo $e->getErrorMessage() . PHP_EOL;
+        } catch (ServerException $e) {
+            echo $e->getErrorMessage() . PHP_EOL;
+        }
     }
 }
